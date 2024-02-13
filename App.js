@@ -1,3 +1,6 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+
 /**
  * 
  * it is and object become html which browser understand
@@ -7,7 +10,7 @@ const parent = React.createElement(
     "div",
     {id: "parent"},[
         React.createElement("div", {id: "child"},[
-            React.createElement("h1", {},("i am h1")),
+            React.createElement("h1", {},("This is Heading")),
             React.createElement("h2", {},("i am h2"))
         ]),
         React.createElement("div", {id: "child2"},[
