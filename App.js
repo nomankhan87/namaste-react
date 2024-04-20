@@ -1,49 +1,92 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
-//JSX (Transpiled before reach the JS) - Parcel - Babel
-
-//JSX => babel transpile into  React.createElement => ReactElement-Js Object => HTMLElement(render)
+import "./index.css";
 
 /**
- *
- * it is and object become html which browser understand
- * React.createElement(Object) => HTML(Browser understand)
- */
-
-//Composing component
-
-const elem = <span>React Element </span>;
+     Header
+        - Logo(Title)
+        - Nav Items(Right Side)
+        - Cart
+     Body 
+        - Search bar
+        - RestrauntList
+          - RestaurantCard (many cards)
+              - Image
+              - Name
+              - Rating
+              - Cusines
+     Footer
+      - links
+      - Copyright
+  
+*/
 
 const Title = () => (
-  <h1 className="head" tabIndex="5">
-  {elem}  <br></br>
-    Test react using JSX
-  </h1>
+  <a href="/">
+    <img
+      className="logo"
+      alt="logo"
+      src="https://yt3.ggpht.com/ytc/AMLnZu_EC-ECXAxRAixWGEfMsE1rdSoetBHyxmLNdtCB=s900-c-k-c0x00ffffff-no-rj"
+    />
+  </a>
 );
 
-const value = 1000;
+const styleCard = {
+  backgroundColor: "f0f0f0",
+};
 
-const HeadingComponent = () => (
-  <div id="container" tabIndex="5">
-    {console.log('test value', value)}
-    {value+22}
-    <Title />
-    <Title></Title>
-    {Title()}
-    <h1 className="head" tabIndex="5">
-        Test react functional component
-    </h1>
-  </div>
-);
+const RestrauntCard = () => {
+  return (
+    <div className="res-card" style={styleCard}>
+      <h3>Meghna Food</h3>
+      <h3>Biryani</h3>
+      <h3>3 stars</h3>
+      <h3>4 min</h3>
+    </div>
+  );
+};
 
-const des = (
-  <div>Description
-    <HeadingComponent/>
-  </div>
-);
+const Header = () => {
+  return (
+    <div className="header">
+      <Title />
+      <div className="nav-items">
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Contact</li>
+          <li>Cart</li>
+        </ul>
+      </div>
+    </div>
+  );
+};
 
+const Body = () => {
+  return (
+    <div className="body">
+      <div className="search"></div>
+      <div className="res-container">
+        <RestrauntCard />
+      </div>
+    </div>
+  );
+};
+
+const Footer = () => {
+  return <h4>Footer</h4>;
+};
+
+const AppLayout = () => {
+  return (
+    <>
+      <Header />
+      <Body />
+      <Footer />
+    </>
+  );
+};
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(des);
+root.render(<AppLayout />);
