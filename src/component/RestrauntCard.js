@@ -4,6 +4,15 @@ const RestrauntCard = (props) => {
   const { resData } = props;
   const { cloudinaryImageId, name, cuisines, avgRating, lastMileTravelString } =
     resData?.data;
+    //two way to handle props in component
+// const RestrauntCard = ({
+//   cloudinaryImageId,
+//   name,
+//   cuisines,
+//   avgRating,
+//   lastMileTravelString,
+// }) => {
+
   return (
     <div className="card">
       <img src={CDN_URL + cloudinaryImageId} />

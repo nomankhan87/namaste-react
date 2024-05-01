@@ -41,3 +41,19 @@
 
   flex-wrap: wrap;
 }
+
+.filter{
+  display: flex;
+}
+.filter-btn{margin-left: 10px;}
+
+.shimmer-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+.shimmer-card {
+  width: 200px;
+  height: 200px;
+  background: lightgrey;
+  margin: 20px;
+}
