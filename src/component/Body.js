@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 
 const Body = () => {
-  const [listOfRestaurants, setListOfRestaurants] = useState(restaurantList);
-  const [filteredrRestaurants, setFilteredrRestaurants] = useState(restaurantList);
+  const [listOfRestaurants, setListOfRestaurants] = useState([]);
+  const [filteredrRestaurants, setFilteredrRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
 
 useEffect(() => {
@@ -17,13 +17,13 @@ useEffect(() => {
 
 const getRestaurants = async () => {
   const data = await fetch(
-    "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
+    "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
   );
   const json = await data.json();
-  console.log(json?.data?.cards)
+  console.log(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
   
-  //setListOfRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-  //setListOfRestaurants(json?.data?.cards);
+  setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+  setFilteredrRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   
 };
 
@@ -79,7 +79,7 @@ const getRestaurants = async () => {
         {/* <RestrauntCard resData={restrautList[0]} /> */}
         {/* when we do single return from code it can be use, the function body is assumed to be a single expression. */}
         {filteredrRestaurants.map((restaurant) => (
-          <RestrauntCard key={restaurant.data.id} resData={restaurant} />
+          <RestrauntCard key={restaurant.info.id} resData={restaurant} />
         ))}
         {/* When you use curly braces {} to define the function body, it becomes a block of code.
         Inside the block, you need to explicitly use the return statement to specify the value the function should return.
