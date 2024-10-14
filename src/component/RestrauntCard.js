@@ -13,6 +13,24 @@ const RestrauntCard = (props) => {
 //   lastMileTravelString,
 // }) => {
 
+
+  //Array destructuring
+  // var fruits  = ['Banana', 'Apple', 'Mango', 'Orange’];
+  // var [firstFruit, secondFruit, ...rest] = fruits;
+
+  // console.log(firstFruit); // Outputs 'Banana'
+  // console.log(secondFruit); // Outputs 'Apple'
+  // console.log(rest); // Outputs ['Mango', 'Orange’ ]
+
+  
+  //Object destructuring
+  // var contact = { names: 'daniyal', age: 23, email: 'daniyalnagori@yahoo.com' } 
+  // var { names = 'zeeshan', age, email, phone = '03170113001' } = contact;
+
+  // console.log(names); // Outputs 'daniyal'
+  // console.log(phone); // Outputs '03170113001l'
+
+  
   return (
     <div className="card">
       <img src={CDN_URL + cloudinaryImageId} />

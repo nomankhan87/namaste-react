@@ -29,7 +29,7 @@ const getRestaurants = async () => {
 
   function filterData(searchText, listOfRestaurants) {
     const filterData = listOfRestaurants.filter((restaurant) =>
-      restaurant.data.name.toLowerCase().includes(searchText.toLowerCase())
+      restaurant.info.name.toLowerCase().includes(searchText.toLowerCase())
     );
     return filterData;
   }
@@ -66,9 +66,9 @@ const getRestaurants = async () => {
         <button
           className="filter-btn"
           onClick={() => {
-            restaurantListJS = listOfRestaurants.filter((res) => res.data.avgRating > 3);
-            setListOfRestaurants(restaurantListJS);
-            //console.log(restrautList);
+            restaurantListJS = listOfRestaurants.filter((res) => res?.info?.avgRating > 4.4);
+            setFilteredrRestaurants(restaurantListJS);
+            //console.log(restaurantListJS);
           }}
         >
           Top Rated Restaurant
