@@ -2,6 +2,7 @@ import RestrauntCard from "./RestrauntCard";
 import restaurantList from "../../utils/mockData";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -17,7 +18,9 @@ useEffect(() => {
 
 const getRestaurants = async () => {
   const data = await fetch(
-    "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+  //"https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.9615398&lng=79.2961468&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    //got this second link from namaste react notes
   );
   const json = await data.json();
   console.log(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
@@ -79,7 +82,7 @@ const getRestaurants = async () => {
         {/* <RestrauntCard resData={restrautList[0]} /> */}
         {/* when we do single return from code it can be use, the function body is assumed to be a single expression. */}
         {filteredrRestaurants.map((restaurant) => (
-          <RestrauntCard key={restaurant.info.id} resData={restaurant} />
+          <Link key={restaurant.info.id} to={"/restraunt/" + restaurant.info.id}><RestrauntCard  resData={restaurant} /></Link>
         ))}
         {/* When you use curly braces {} to define the function body, it becomes a block of code.
         Inside the block, you need to explicitly use the return statement to specify the value the function should return.
