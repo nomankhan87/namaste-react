@@ -6,7 +6,7 @@ const User = (props) => {
   useEffect(() => {
     // API Call
     const timer = setInterval(() => {
-      console.log("NAMASTE REACT OP ");
+      console.log("NAMASTE REACT functoinal OP ");
     }, 1000);
     console.log("useEffect");
     return () => {

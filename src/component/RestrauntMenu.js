@@ -43,7 +43,7 @@ const RestrauntMenu = () => {
       <div>
         <h1>Restraunt id: {resId}</h1>
         <h2>{restauraunt?.cards[2]?.card?.card?.info?.name}</h2>
-        <img src={CDN_URL + cloudinaryImageId} className="styleImg" style={ {"max-width": "200px"}} />
+        <img src={CDN_URL + cloudinaryImageId} className="styleImg" />
         {/*<h3>{restaurant?.area}</h3>
         <h3>{restaurant?.city}</h3>
         <h3>{restaurant?.avgRating} stars</h3>*/}
