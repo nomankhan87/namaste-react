@@ -21,6 +21,10 @@ const getRestaurants = async () => {
   //"https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.9615398&lng=79.2961468&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     //got this second link from namaste react notes
+
+//new link full data from browser
+//https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING
+
   );
   const json = await data.json();
   console.log(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)

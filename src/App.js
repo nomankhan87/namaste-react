@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import "./../index.css";
 import Header from "./component/Header";
@@ -11,10 +11,13 @@ import Error from "./component/Error";
 import Test from "./component/Test";
 import RestrauntCard from "./component/RestrauntCard";
 import RestrauntMenu from "./component/RestrauntMenu";
+import Shimmer from "./component/Shimmer";
 
 const styleCard = {
   backgroundColor: "f0f0f0",
 };
+
+const Grocery = lazy(() => import("./component/Grocery"));
 
 const AppLayout = () => {
   return (
@@ -46,7 +49,15 @@ const appRoute = createBrowserRouter([
       {
         path: "/restraunt/:resId",
         element: <RestrauntMenu />
-      }          
+      },
+      {
+        path: "/grocery",
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <Grocery />
+          </Suspense>
+        ),
+      },
     ],
     errorElement: <Error />
   },

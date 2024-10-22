@@ -4,29 +4,18 @@ import { useParams } from "react-router-dom";
 import { MENAPI, CDN_URL } from "../../utils/constanst";
 
 import Shimmer from "./Shimmer";
+import useRestrauntMenu from "../../utils/useRestrauntMenu";
 const RestrauntMenu = () => {
   // how to read a dynamic URL params
   const { resId } = useParams();
 
-  const [restauraunt ,setRestauraunt] = useState(null)
-
-  useEffect(() => {
-    fetchMenu();
-  }, [])
-
-
-  const fetchMenu = async () => {
-    const data = await fetch(MENAPI + resId);
-    const json = await data.json();
-    console.log(json.data.cards[2].card.card.info);
-    setRestauraunt(json.data);
-  }
-
+  const restauraunt = useRestrauntMenu(resId); //fetch ogic moved in hook
   
   if (restauraunt === null) return <Shimmer />;  // it reolved undefined issue
 
 
   const styleCard = { backgroundColor: "#f0f0f0" };
+  const styleImg = { "max-width": "300px" };
 
   console.log(restauraunt?.cards[2]);
   console.log(restauraunt?.cards[2]?.card?.card?.info?.cuisines)
@@ -43,7 +32,7 @@ const RestrauntMenu = () => {
       <div>
         <h1>Restraunt id: {resId}</h1>
         <h2>{restauraunt?.cards[2]?.card?.card?.info?.name}</h2>
-        <img src={CDN_URL + cloudinaryImageId} className="styleImg" />
+        <img src={CDN_URL + cloudinaryImageId} style={styleImg} />
         {/*<h3>{restaurant?.area}</h3>
         <h3>{restaurant?.city}</h3>
         <h3>{restaurant?.avgRating} stars</h3>*/}

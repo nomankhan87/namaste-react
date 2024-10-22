@@ -42,8 +42,11 @@
   flex-wrap: wrap;
 }
 
-.filter{
+.filter, .flex-display{
   display: flex;
+}
+.flex-display{
+  margin-top: 15px;
 }
 .filter-btn{margin-left: 10px;}
 
