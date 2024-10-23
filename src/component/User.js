@@ -16,11 +16,12 @@ const User = (props) => {
   }, []);
   console.log("render functional comp");
   return (
-    <div className="componentBg">
+    <div className="user-card m-4 p-4 bg-gray-50 rounded-lg">
       <h2>USer {props.name} Component</h2>
       <h3>Name: {props.name}</h3>
       <h3>Count: {count}</h3>
       <button
+      className="px-4 py-2 bg-green-100 m-4 rounded-lg"
         onClick={() => {
           setCount(count+1);
         }}

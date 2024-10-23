@@ -32,9 +32,11 @@ const RestrauntCard = (props) => {
 
   
   return (
-    <div className="card">
-      <img src={CDN_URL + cloudinaryImageId} />
-      <h2>{name}</h2>
+    <div className="m-4 p-4 w-[250px] rounded-lg bg-gray-100 hover:bg-gray-200">
+      <img src={CDN_URL + cloudinaryImageId}
+        className="rounded-lg"
+      />
+      <h2 className="font-bold py-4 text-lg">{name}</h2>
       <h3>{cuisines.join(", ")}</h3>
       <h3>{avgRating} stars</h3>
       <h4>{lastMileTravelString} minutes</h4>

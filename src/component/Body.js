@@ -19,11 +19,12 @@ useEffect(() => {
 const getRestaurants = async () => {
   const data = await fetch(
   //"https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.9615398&lng=79.2961468&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    //got this second link from namaste react notes
 
-//new link full data from browser
-//https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING
+    //got this second link from namaste react notes
+    //"https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.9615398&lng=79.2961468&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+
+    //new link full data from browser
+    "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
 
   );
   const json = await data.json();
@@ -45,12 +46,11 @@ const getRestaurants = async () => {
     <Shimmer />
   ) :(
     <div className="body">
-      <div className="filter">
-
-        <div className="search-container">
+      <div className="filter flex">
+        <div className="search m-4 p-4">
           <input
             type="text"
-            className="search-input"
+            className="border border-solid border-black"
             placeholder="Search"
             value={searchText}
             onChange={(e) => {
@@ -58,7 +58,7 @@ const getRestaurants = async () => {
             }}
           />
           <button
-            className="search-btn"
+            className="px-4 py-2 bg-green-100 m-4 rounded-lg"
             onClick={() => {
               //need to filter the data
               const data = filterData(searchText, listOfRestaurants);
@@ -70,9 +70,10 @@ const getRestaurants = async () => {
           </button>
         </div>
 
+        <div className="search m-4 p-4 flex items-center">
         <button
-          className="filter-btn"
-          onClick={() => {
+            className="px-4 py-2 bg-gray-100 rounded-lg"
+            onClick={() => {
             restaurantListJS = listOfRestaurants.filter((res) => res?.info?.avgRating > 4.4);
             setFilteredrRestaurants(restaurantListJS);
             //console.log(restaurantListJS);
@@ -80,9 +81,10 @@ const getRestaurants = async () => {
         >
           Top Rated Restaurant
         </button>
+        </div>
       </div>
 
-      <div className="res-container restaurant-list">
+      <div className="flex flex-wrap border-primary">
         {/* <RestrauntCard resData={restrautList[0]} /> */}
         {/* when we do single return from code it can be use, the function body is assumed to be a single expression. */}
         {filteredrRestaurants.map((restaurant) => (

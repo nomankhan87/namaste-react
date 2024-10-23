@@ -49,7 +49,7 @@ class UserClass extends React.Component {
 
     console.log("Child - render" + this.props.name);
     return (
-      <div className="componentBg">
+      <div className="user-card m-4 p-4 bg-gray-50 rounded-lg">
         <h1> User {this.props.name} Class Component </h1>
 
         <img src={this.state.userInfo.avatar_url} style={ {"max-width": "200px"}} />
@@ -57,6 +57,7 @@ class UserClass extends React.Component {
         <h2>Location: {this.state.userInfo.location}</h2>
         <h3>Count: {count}</h3>
         <button
+          className="px-4 py-2 bg-green-100 m-4 rounded-lg"
           onClick={() => {
             //NEVER Update state variable directly
             this.setState({

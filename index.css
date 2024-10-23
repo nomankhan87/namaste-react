@@ -1,4 +1,9 @@
-.header {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* .header {
   display: flex;
 
   justify-content: space-between;
@@ -63,4 +68,4 @@
 
 .componentBg{
   background-color: lightgrey;
-}
+} */
