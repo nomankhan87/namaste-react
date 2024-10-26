@@ -1,4 +1,4 @@
-import RestrauntCard from "./RestrauntCard";
+import RestrauntCard, {withPromoRestrauntCard} from "./RestrauntCard";
 import restaurantList from "../../utils/mockData";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
@@ -9,10 +9,12 @@ const Body = () => {
   const [filteredrRestaurants, setFilteredrRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
 
+  RestrauntCardPromoted = withPromoRestrauntCard(RestrauntCard)
+
 useEffect(() => {
   //API call 
   getRestaurants();
-  //console.log(restaurants);
+  console.log(filteredrRestaurants);
 }, []);
 
 
@@ -88,7 +90,13 @@ const getRestaurants = async () => {
         {/* <RestrauntCard resData={restrautList[0]} /> */}
         {/* when we do single return from code it can be use, the function body is assumed to be a single expression. */}
         {filteredrRestaurants.map((restaurant) => (
-          <Link key={restaurant.info.id} to={"/restraunt/" + restaurant.info.id}><RestrauntCard  resData={restaurant} /></Link>
+          <Link key={restaurant.info.id} to={"/restraunt/" + restaurant.info.id}>            
+            {restaurant?.info?.id == '588619' ? (
+              <RestrauntCardPromoted resData={restaurant} />
+            ):(
+              <RestrauntCard resData={restaurant} /> 
+            )}
+            </Link>
         ))}
         {/* When you use curly braces {} to define the function body, it becomes a block of code.
         Inside the block, you need to explicitly use the return statement to specify the value the function should return.

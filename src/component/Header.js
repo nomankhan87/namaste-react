@@ -5,9 +5,8 @@ import useOnline from "../../utils/useOnline";
 
 const Title = () => (
     <a href="/">
-      Logo
       {<img
-        className="logo"
+        className="logo max-w-28"
         alt="logo"
         src={LOGO_URL}
       />}
