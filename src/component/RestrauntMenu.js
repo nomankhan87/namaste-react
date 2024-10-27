@@ -10,6 +10,8 @@ const RestrauntMenu = () => {
   // how to read a dynamic URL params
   const { resId } = useParams();
 
+  const [showIndex, setShowIndex] = useState(null)  
+
   const restauraunt = useRestrauntMenu(resId); //fetch ogic moved in hook
   
   if (restauraunt === null) return <Shimmer />;  // it reolved undefined issue
@@ -53,7 +55,13 @@ const RestrauntMenu = () => {
       </div> */}
       <div>
         {categories.map((category, index)=>(
-            <RestrauntCategory key={category?.card?.card?.title} data={category?.card?.card} />
+          // controlled component
+            <RestrauntCategory 
+            key={category?.card?.card?.title} 
+            data={category?.card?.card}
+            showItems={index == showIndex ? true : false}      
+            setShowIndex = {()=>{setShowIndex(index)}}      
+            />
         ))}
 
       </div>

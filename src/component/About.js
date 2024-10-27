@@ -1,6 +1,7 @@
 import React from "react";
 import User from "./User";
 import UserClass from "./UserClass";
+import UserContext from "../../utils/UserContext";
 
 
 // class About extends Component {
@@ -17,7 +18,12 @@ class About extends React.Component {
     console.log("Parent - render");
     return (
       <div>
-        <h1>About Us Page</h1>
+        <h1>About Us Page Class Coponent</h1>
+        <UserContext.Consumer>
+          {({loggedInUser}) => (
+              <h1 className="text-xl font-bold">{loggedInUser}</h1>
+          )}
+        </UserContext.Consumer>
         <p>
           This is the Namaste React Live Course Chapter 07 - Finding the Path 🚀
         </p>

@@ -1,9 +1,13 @@
+import { useContext } from "react";
 import { CDN_URL } from "../../utils/constanst";
+import UserContext from "../../utils/UserContext";
 
 const RestrauntCard = (props) => {
   const { resData } = props;
   const { cloudinaryImageId, name, cuisines, avgRating, lastMileTravelString } =
     resData?.info;
+    const { loggedInUser } = useContext(UserContext);
+    console.log(loggedInUser);
     //two way to handle props in component
 // const RestrauntCard = ({
 //   cloudinaryImageId,
@@ -40,6 +44,7 @@ const RestrauntCard = (props) => {
       <h3>{cuisines.join(", ")}</h3>
       <h3>{avgRating} stars</h3>
       <h4>{lastMileTravelString} minutes</h4>
+      <h4>User : {loggedInUser} </h4>
     </div>
   );
 };

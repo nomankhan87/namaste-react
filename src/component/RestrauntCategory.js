@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import ItemList from "./ItemList";
 
-const RestrauntCategory = (data) => {
+const RestrauntCategory = ({data, showItems, setShowIndex}) => {
 
-  const {title} = data?.data;
+  console.log('render +', data);
 
-  const [showItems, setShowItems] = useState(false);
+  const {title} = data;
+
+  //const [showItems, setShowItems] = useState(false);
 
   const handleClick = () => {
-    setShowItems(!showItems);
+    setShowIndex();
   };
 
    return (
@@ -19,11 +21,11 @@ const RestrauntCategory = (data) => {
           className="flex justify-between cursor-pointer"
           onClick={handleClick}
         >
-          <div>{title} ({data?.data?.itemCards?.length})</div>
+          <div>{title} ({data?.itemCards?.length})</div>
           <span>⬇️</span>
         </div>
 
-        {showItems && <ItemList items={data?.data?.itemCards} />}
+        {showItems && <ItemList items={data?.itemCards} />}
       </div>
     </div>
     );
