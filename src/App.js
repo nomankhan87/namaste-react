@@ -13,6 +13,9 @@ import RestrauntCard from "./component/RestrauntCard";
 import RestrauntMenu from "./component/RestrauntMenu";
 import Shimmer from "./component/Shimmer";
 import UserContext from "../utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "../utils/appStore";
+import Cart from "./component/Cart";
 
 const styleCard = {
   backgroundColor: "f0f0f0",
@@ -33,11 +36,13 @@ const AppLayout = () => {
   
   return (
     <>
-      <Header />
-      <UserContext.Provider value={{loggedInUser : userName, setUserName}}  >
-      <Outlet />
-      </UserContext.Provider>
-      <Footer />
+      <Provider store={appStore} >
+        <Header />
+        <UserContext.Provider value={{loggedInUser : userName, setUserName}}  >
+        <Outlet />
+        </UserContext.Provider>
+        <Footer />
+      </Provider>
     </>
   );
 };
@@ -62,6 +67,10 @@ const appRoute = createBrowserRouter([
       {
         path: "/restraunt/:resId",
         element: <RestrauntMenu />
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/grocery",
