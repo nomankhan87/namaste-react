@@ -1,6 +1,5 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { MENAPI, CDN_URL } from "../../utils/constanst";
 
 import Shimmer from "./Shimmer";
@@ -13,7 +12,20 @@ const RestrauntMenu = () => {
   const [showIndex, setShowIndex] = useState(null)  
 
   const restauraunt = useRestrauntMenu(resId); //fetch ogic moved in hook
-  
+ 
+  const accordianSet = (index) => {
+    const indexValue = index == showIndex ? true : false;
+    console.log(indexValue, 'indexValue');
+    console.log(index, 'index');
+    if((index == showIndex) && indexValue) {
+      console.log('inside index');
+      return index == !indexValue
+    }else{
+      return index == showIndex ? true : false
+
+    }
+  }
+
   if (restauraunt === null) return <Shimmer />;  // it reolved undefined issue
 
 
@@ -39,6 +51,7 @@ const RestrauntMenu = () => {
 
 
    return (
+    <>    
     <div className="text-center">
       <h1 className="font-bold my-6 text-2xl">{restauraunt?.cards[2]?.card?.card?.info?.name}</h1>
       <h2>Restraunt id: {resId}</h2>
@@ -79,6 +92,7 @@ const RestrauntMenu = () => {
 
 
     </div>
+    </>
     );
   };
 

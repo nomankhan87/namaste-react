@@ -2,6 +2,19 @@ import { useContext } from "react";
 import { CDN_URL } from "../../utils/constanst";
 import UserContext from "../../utils/UserContext";
 
+export const withPromoRestrauntCard = (RestrauntCard) => {
+  return (props) => {
+    console.log(props);
+    return (
+      <div>
+      <label className="absolute bg-black text-white m-2 p-2 rounded-lg">Promoted</label>
+        <RestrauntCard {...props}  />
+      </div>
+    )    
+  }
+
+}
+
 const RestrauntCard = (props) => {
   const { resData } = props;
   const { cloudinaryImageId, name, cuisines, avgRating, lastMileTravelString } =
@@ -36,7 +49,7 @@ const RestrauntCard = (props) => {
 
   
   return (
-    <div className="m-4 p-4 w-[250px] rounded-lg bg-gray-100 hover:bg-gray-200">
+    <div data-testid="resCard" className="m-4 p-4 w-[250px] rounded-lg bg-gray-100 hover:bg-gray-200">
       <img src={CDN_URL + cloudinaryImageId}
         className="rounded-lg"
       />
@@ -48,19 +61,5 @@ const RestrauntCard = (props) => {
     </div>
   );
 };
-
-
-export const withPromoRestrauntCard = (RestrauntCard) => {
-  return (props) => {
-    console.log(props);
-    return (
-      <div>
-      <label className="absolute bg-black text-white m-2 p-2 rounded-lg">Promoted</label>
-        <RestrauntCard {...props}  />
-      </div>
-    )    
-  }
-
-}
 
 export default RestrauntCard;

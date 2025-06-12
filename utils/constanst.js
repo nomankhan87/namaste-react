@@ -11,6 +11,6 @@ export const LOGO_URL = "https://www.logodesign.net/logo/smoking-burger-with-let
 
 //new link full data from browser
 export const MENAPI =
-"https://corsproxy.io/?https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9351929&lng=77.62448069999999&restaurantId=";
+"https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9351929&lng=77.62448069999999&restaurantId=";
 
 //https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9715987&lng=77.5945627&restaurantId=476261&catalog_qa=undefined&submitAction=ENTER
